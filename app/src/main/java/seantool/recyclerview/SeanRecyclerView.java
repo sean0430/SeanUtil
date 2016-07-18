@@ -1,4 +1,4 @@
-package seantool;
+package seantool.recyclerview;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -55,6 +55,7 @@ public class SeanRecyclerView extends RecyclerView {
 
     }
 
+    /*  Set some attribute is you want to change  */
     public void setIsHasFixedSize(boolean isHasFixedSize) {
         this.isHasFixedSize = isHasFixedSize;
     }
@@ -85,6 +86,7 @@ public class SeanRecyclerView extends RecyclerView {
         setAdapter(adapter);
     }
 
+    //Set LayoutManager
     private void setLayoutManagerAttr(@NonNull LayoutType layoutType, int spanCount,
                                       boolean isVertical, boolean reverseLayout) {
 
@@ -109,6 +111,7 @@ public class SeanRecyclerView extends RecyclerView {
         setLayoutManager(mLayoutManager);
     }
 
+    //Set builder to build recyclerView
     public interface SeanRecyclerViewBuilder {
         int getCellCount();
 
@@ -143,6 +146,7 @@ public class SeanRecyclerView extends RecyclerView {
 
     }
 
+    //Adapter
     private class SeanRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
         @Override

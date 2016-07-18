@@ -8,7 +8,7 @@
     tools:context=".MainActivity">
 
 
-<seantool.SeanRecyclerView
+<seantool.recyclerview.SeanRecyclerView
     android:id="@+id/srvTest"
     android:layout_width="match_parent"
     android:layout_height="match_parent"/>

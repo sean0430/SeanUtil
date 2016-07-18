@@ -10,7 +10,6 @@ import android.support.annotation.NonNull;
 public class SeanTool {
 
     private static SeanTool instance = null;
-    private Context context;
     private SeanNotify notifyTool;
     private SeanTime timeTool;
 
@@ -22,7 +21,6 @@ public class SeanTool {
     }
 
     private SeanTool(Context context) {
-        this.context = context;
         notifyTool = new SeanNotify(context);
         timeTool = new SeanTime();
     }

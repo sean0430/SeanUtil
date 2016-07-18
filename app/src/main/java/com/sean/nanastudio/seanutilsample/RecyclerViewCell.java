@@ -3,7 +3,7 @@ package com.sean.nanastudio.seanutilsample;
 import android.content.Context;
 import android.widget.TextView;
 
-import seantool.SeanRecyclerViewCell;
+import seantool.recyclerview.SeanRecyclerViewCell;
 
 /**
  * SeanUtilSample
@@ -11,7 +11,9 @@ import seantool.SeanRecyclerViewCell;
  */
 public class RecyclerViewCell extends SeanRecyclerViewCell {
 
-    private static final String TAG = "RecyclerViewCell";
+    public RecyclerViewCell(Context context) {
+        super(context);
+    }
 
     public RecyclerViewCell(Context context, int layoutId) {
         super(context, layoutId);

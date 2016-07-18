@@ -2,15 +2,14 @@ package com.sean.nanastudio.seanutilsample;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
 
 
 import java.util.List;
 
-import seantool.SeanRecyclerView;
-import seantool.SeanRecyclerViewCell;
+import seantool.recyclerview.SeanRecyclerView;
+import seantool.recyclerview.SeanRecyclerViewCell;
 import seantool.SeanTool;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
@@ -54,7 +53,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         });
         seanRecyclerView.onBuild();
-
 
     }
 
