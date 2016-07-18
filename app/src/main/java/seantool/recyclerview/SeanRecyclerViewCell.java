@@ -1,3 +1,12 @@
+
+/*
+ *  Copyright (C) 2016 by Sean Lin
+ *
+ *  ALL RIGHTS RESERVED
+ *
+ *
+ */
+
 package seantool.recyclerview;
 
 import android.content.Context;

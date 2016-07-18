@@ -1,3 +1,11 @@
+/*
+ *  Copyright (C) 2016 by Sean Lin
+ *
+ *  ALL RIGHTS RESERVED
+ *
+ *
+ */
+
 package seantool;
 
 import android.content.Context;
