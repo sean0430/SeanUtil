@@ -35,8 +35,8 @@ import android.view.ViewGroup;
 public class SeanRecyclerView extends RecyclerView {
 
     private Context mContext;
-    private SeanRecyclerViewBuilder seanRecyclerViewBuilder;
-    private SeanRecyclerViewAdapter adapter;
+    private SeanRecyclerViewBuilder mSeanRecyclerViewBuilder;
+    private SeanRecyclerViewAdapter mAdapter;
 
     private boolean isHasFixedSize = true;
 
@@ -68,7 +68,6 @@ public class SeanRecyclerView extends RecyclerView {
 
     private void initial(Context context) {
         mContext = context;
-
     }
 
     /*  Set some attribute is you want to change  */
@@ -76,8 +75,8 @@ public class SeanRecyclerView extends RecyclerView {
         this.isHasFixedSize = isHasFixedSize;
     }
 
-    public void setSeanRecyclerViewBuilder(SeanRecyclerViewBuilder seanRecyclerViewBuilder) {
-        this.seanRecyclerViewBuilder = seanRecyclerViewBuilder;
+    public void setmSeanRecyclerViewBuilder(SeanRecyclerViewBuilder mSeanRecyclerViewBuilder) {
+        this.mSeanRecyclerViewBuilder = mSeanRecyclerViewBuilder;
     }
 
     public void setLayoutType(LayoutType layoutType) {
@@ -102,8 +101,8 @@ public class SeanRecyclerView extends RecyclerView {
 
         setLayoutManagerAttr(layoutType, spanCount, isVertical, isReserve);
 
-        adapter = new SeanRecyclerViewAdapter();
-        setAdapter(adapter);
+        mAdapter = new SeanRecyclerViewAdapter();
+        setAdapter(mAdapter);
     }
 
     //Set LayoutManager
@@ -154,16 +153,16 @@ public class SeanRecyclerView extends RecyclerView {
     }
 
     public void insertItem(int position) {
-        adapter.notifyItemInserted(position);
+        mAdapter.notifyItemInserted(position);
     }
 
     public void removeItem(int position) {
-        adapter.notifyItemRemoved(position);
+        mAdapter.notifyItemRemoved(position);
     }
 
     public void updateData() {
-        if (adapter != null)
-            adapter.notifyDataSetChanged();
+        if (mAdapter != null)
+            mAdapter.notifyDataSetChanged();
 
     }
 
@@ -172,18 +171,18 @@ public class SeanRecyclerView extends RecyclerView {
 
         @Override
         public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-            return new SeanRecyclerViewHolder(seanRecyclerViewBuilder.onCreateCell(parent, viewType));
+            return new SeanRecyclerViewHolder(mSeanRecyclerViewBuilder.onCreateCell(parent, viewType));
         }
 
         @Override
         public void onBindViewHolder(ViewHolder holder, int position) {
             SeanRecyclerViewCell cell = (SeanRecyclerViewCell) holder.itemView;
-            seanRecyclerViewBuilder.onBindData(cell, position);
+            mSeanRecyclerViewBuilder.onBindData(cell, position);
         }
 
         @Override
         public int getItemCount() {
-            return seanRecyclerViewBuilder.getCellCount();
+            return mSeanRecyclerViewBuilder.getCellCount();
         }
 
         private class SeanRecyclerViewHolder extends RecyclerView.ViewHolder {
