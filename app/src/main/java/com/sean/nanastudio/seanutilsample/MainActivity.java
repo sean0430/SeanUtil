@@ -1,5 +1,6 @@
 package com.sean.nanastudio.seanutilsample;
 
+import android.support.design.widget.TabLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -25,6 +26,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         seanTool = SeanTool.getInstance(this);
 
+        findViewById(R.id.fab).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                seanTool.getNotifyTool().showShortSnackBar(findViewById(R.id.fab), "This is snack bar");
+            }
+        });
+
+        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabLayout);
+        tabLayout.addTab(tabLayout.newTab().setText("Tab 1"));
+        tabLayout.addTab(tabLayout.newTab().setText("Tab 2"));
+        tabLayout.addTab(tabLayout.newTab().setText("Tab 3"));
         setSeanRecyclerView();
     }
 
