@@ -1,21 +1,30 @@
 package com.sean.nanastudio.seanutilsample;
 
+import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.view.ViewPager;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 
 
+import java.util.ArrayList;
 import java.util.List;
 
-import seantool.recyclerview.SeanRecyclerView;
-import seantool.recyclerview.SeanRecyclerViewCell;
 import seantool.SeanTool;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class MainActivity extends AppCompatActivity  {
 
-    SeanTool seanTool;
+    private static SeanTool seanTool;
+    private DrawerLayout drawerLayout;
     private final static String TEST_TITLE = "TEST!!";
     private final static String TEST_MESSAGE = "This is test..";
 
@@ -33,44 +42,95 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         });
 
-        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabLayout);
-        tabLayout.addTab(tabLayout.newTab().setText("Tab 1"));
-        tabLayout.addTab(tabLayout.newTab().setText("Tab 2"));
-        tabLayout.addTab(tabLayout.newTab().setText("Tab 3"));
-        setSeanRecyclerView();
-    }
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
-    private void setSeanRecyclerView() {
+        final ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setHomeAsUpIndicator(R.drawable.ic_menu);
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
 
-        SeanRecyclerView seanRecyclerView = (SeanRecyclerView) findViewById(R.id.srvTest);
-        seanRecyclerView.setSeanRecyclerViewBuilder(new SeanRecyclerView.SeanRecyclerViewBuilder() {
 
-            List<MockDataInfo> mockDataInfos = new MockData().getMockDataInfos();
 
-            @Override
-            public int getCellCount() {
-                return mockDataInfos.size();
-            }
+        drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 
-            @Override
-            public SeanRecyclerViewCell onCreateCell(ViewGroup viewGroup, int type) {
-                return new RecyclerViewCell(getApplicationContext(), R.layout.cell_mock);
-            }
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        if (navigationView != null) {
+            setupDrawerContent(navigationView);
+        }
 
-            @Override
-            public void onBindData(SeanRecyclerViewCell recyclerViewCell, int position) {
-                MockDataInfo mockDataInfo = mockDataInfos.get(position);
-                RecyclerViewCell cell = (RecyclerViewCell) recyclerViewCell;
-                cell.bindData(mockDataInfo);
-            }
-        });
-        seanRecyclerView.onBuild();
+        ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
+        if (viewPager != null) {
+            setupViewPager(viewPager);
+        }
+
+
+        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
+        tabLayout.setupWithViewPager(viewPager);
 
     }
 
     @Override
-    public void onClick(View view) {
-        seanTool.getNotifyTool().sentSimpleNotification(TEST_TITLE, TEST_MESSAGE);
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                drawerLayout.openDrawer(GravityCompat.START);
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    private void setupDrawerContent(NavigationView navigationView) {
+        navigationView.setNavigationItemSelectedListener(
+                new NavigationView.OnNavigationItemSelectedListener() {
+                    @Override
+                    public boolean onNavigationItemSelected(MenuItem menuItem) {
+                        menuItem.setChecked(true);
+                        drawerLayout.closeDrawers();
+                        return true;
+                    }
+                });
+    }
+
+
+    private void setupViewPager(ViewPager viewPager) {
+        Adapter adapter = new Adapter(getSupportFragmentManager());
+        adapter.addFragment(new TestFragment(),"Test 1");
+        adapter.addFragment(new TestFragment(),"Test 2");
+        adapter.addFragment(new TestFragment(),"Test 3");
+        viewPager.setAdapter(adapter);
+    }
+
+
+    static class Adapter extends FragmentPagerAdapter {
+
+        private final List<Fragment> fragments = new ArrayList<>();
+        private final List<String> fragmentTitles = new ArrayList<>();
+
+        public Adapter(FragmentManager fm) {
+            super(fm);
+        }
+
+        public void  addFragment(Fragment fragment, String title) {
+            fragments.add(fragment);
+            fragmentTitles.add(title);
+        }
+
+        @Override
+        public Fragment getItem(int position) {
+            return fragments.get(position);
+        }
+
+        @Override
+        public int getCount() {
+            return fragments.size();
+        }
+
+        @Override
+        public CharSequence getPageTitle(int position) {
+            return fragmentTitles.get(position);
+        }
     }
 
 

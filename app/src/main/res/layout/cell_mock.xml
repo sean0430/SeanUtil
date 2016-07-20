@@ -8,31 +8,41 @@
     android:orientation="vertical">
 
     <android.support.v7.widget.CardView
-        app:cardBackgroundColor="#cfbb4e"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#36be4d"
         android:layout_margin="5dp"
+        android:background="#36be4d"
+        app:cardBackgroundColor="#cfbb4e"
         app:cardCornerRadius="4dp"
         app:cardElevation="4dp">
 
-
-        <TextView
-            android:id="@+id/tvText"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:background="#ab5d5d"
-            android:gravity="center" />
-
-        <Button
-            android:background="#4477ab"
-            android:id="@+id/btnTest"
-            android:gravity="center"
-            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Test button"
-            tools:ignore="HardcodedText" />
+            android:background="#de8a3f"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btnTest"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="#4477ab"
+                android:gravity="center"
+                android:text="Test button"
+                tools:ignore="HardcodedText" />
+
+            <TextView
+                android:id="@+id/tvText"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_margin="5dp"
+                android:background="#ab5d5d"
+                android:gravity="center" />
+
+
+        </LinearLayout>
 
 
     </android.support.v7.widget.CardView>

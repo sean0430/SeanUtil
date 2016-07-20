@@ -26,7 +26,7 @@ public class RecyclerViewCell extends SeanRecyclerViewCell {
     @Override
     public void bindData(Object object) {
 
-        MockDataInfo mockDataInfo = (MockDataInfo) object;
+        final MockDataInfo mockDataInfo = (MockDataInfo) object;
         TextView tvTest = (TextView) findViewById(R.id.tvText);
         tvTest.setText(String.valueOf(mockDataInfo.getSerialID()));
 
@@ -35,7 +35,7 @@ public class RecyclerViewCell extends SeanRecyclerViewCell {
             @Override
             public void onClick(View view) {
 
-                Toast.makeText(getContext(),"Button on click..",Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(),mockDataInfo.getSerialID() + " Button on click..",Toast.LENGTH_SHORT).show();
             }
         });
 

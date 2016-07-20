@@ -15,10 +15,10 @@
   ~  limitations under the License.
   -->
 
-<resources>
-    <style name="AppTheme" parent="Base.Theme.SeanDemo">
-        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
-        <item name="android:statusBarColor">@android:color/transparent</item>
-    </style>
+<seantool.recyclerview.SeanRecyclerView
+    android:id="@+id/srvTest"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
-</resources>
+</seantool.recyclerview.SeanRecyclerView>
