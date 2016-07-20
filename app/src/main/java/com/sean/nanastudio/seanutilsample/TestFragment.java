@@ -47,7 +47,7 @@ public class TestFragment extends Fragment {
     private void setSeanRecyclerView(SeanRecyclerView seanRecyclerView) {
 
 
-        seanRecyclerView.setmSeanRecyclerViewBuilder(new SeanRecyclerView.SeanRecyclerViewBuilder() {
+        seanRecyclerView.setSeanRecyclerViewBuilder(new SeanRecyclerView.SeanRecyclerViewBuilder() {
 
             List<MockDataInfo> mockDataInfos = new MockData().getMockDataInfos();
 

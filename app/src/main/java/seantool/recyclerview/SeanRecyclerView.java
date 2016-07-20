@@ -75,7 +75,7 @@ public class SeanRecyclerView extends RecyclerView {
         this.isHasFixedSize = isHasFixedSize;
     }
 
-    public void setmSeanRecyclerViewBuilder(SeanRecyclerViewBuilder mSeanRecyclerViewBuilder) {
+    public void setSeanRecyclerViewBuilder(SeanRecyclerViewBuilder mSeanRecyclerViewBuilder) {
         this.mSeanRecyclerViewBuilder = mSeanRecyclerViewBuilder;
     }
 
