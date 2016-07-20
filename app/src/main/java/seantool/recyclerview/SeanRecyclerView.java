@@ -167,7 +167,7 @@ public class SeanRecyclerView extends RecyclerView {
 
     }
 
-    //Adapter
+    //ViewPagerAdapter
     private class SeanRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
         @Override
