@@ -131,7 +131,7 @@ public class SeanRecyclerView extends RecyclerView {
         setLayoutManager(mLayoutManager);
     }
 
-    //Set builder to build recyclerView
+    /*  Set builder to build recyclerView  */
     public interface SeanRecyclerViewBuilder {
 
         int getCellCount();
