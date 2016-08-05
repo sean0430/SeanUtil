@@ -19,6 +19,7 @@ package seantool.recyclerview;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -103,6 +104,25 @@ public class SeanRecyclerView extends RecyclerView {
 
         mAdapter = new SeanRecyclerViewAdapter();
         setAdapter(mAdapter);
+    }
+
+    public void setFabAutoHide(final FloatingActionButton floatingActionButton) {
+        addOnScrollListener(new OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+                super.onScrollStateChanged(recyclerView, newState);
+                if(newState==RecyclerView.SCROLL_STATE_IDLE)
+                    floatingActionButton.show();
+            }
+
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+                if(dy>0)floatingActionButton.hide();
+                else floatingActionButton.show();
+            }
+        });
+
     }
 
     //Set LayoutManager

@@ -33,7 +33,19 @@ public class MainActivity extends AppCompatActivity  {
         findViewById(R.id.fab).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                seanTool.getNotifyTool().showShortSnackBar(findViewById(R.id.fab), "This is snack bar");
+//                seanTool.getNotifyTool().showShortSnackBar(findViewById(R.id.fab), "This is snack bar");
+                seanTool.getNotifyTool().showLongSnackBarWithAction(findViewById(R.id.fab),
+                        "This is snack bar..",
+                        "notify",
+                        new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                seanTool.getNotifyTool().sentSimpleNotification(
+                                        "On click",
+                                        "Snack bar is on click!"
+                                );
+                            }
+                        });
             }
         });
 
